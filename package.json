@@ -1,0 +1,28 @@
+{
+  "name": "WDJS_test",
+  "version": "1.0.0",
+  "description": "Selenium testing with WD.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dtonys/WDJS_test.git"
+  },
+  "author": "Tony Schwartz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dtonys/WDJS_test/issues"
+  },
+  "homepage": "https://github.com/dtonys/WDJS_test",
+  "dependencies": {
+    "chai": "^1.10.0",
+    "colors": "^1.0.3",
+    "lodash": "^2.4.1",
+    "minimist": "^1.1.0",
+    "mocha": "^2.0.1",
+    "request": "^2.49.0",
+    "wd": "^0.3.11"
+  }
+}
