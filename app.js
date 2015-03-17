@@ -85,7 +85,8 @@ function run_page_n_times( url, times ){
     p.promise = p.promise
       .get(url)
       .sleep(1000)
-      .eval("window.page_load_ms", function(err, res){
+      .waitForConditionInBrowser("window.performance.timing.domComplete - window.performance.timing.navigationStart > 0", 20000)
+      .eval("window.performance.timing.domComplete - window.performance.timing.navigationStart", function(err, res){
         console.log("url : ", url)
         console.log("window.page_load_ms : ", res)
         return p.promise;
