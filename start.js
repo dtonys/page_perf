@@ -46,47 +46,7 @@ console.log('browser: '+browser_name+', environment: '+ environment);
 
 var page = '/search';
 
-// setup
+// search
 p.promise = browser
   .init({ browserName: browser_name })
   .setAsyncScriptTimeout(30000)
-
-login();
-
-// set the cookie to enable page tracking
-p.promise = p.promise.setCookie({ name: 'page_load_object', value: '{}' });
-
-// run targeted pages n times
-run_page_n_times("/search", 10);
-run_page_n_times("/topics/cancer", 10);
-run_page_n_times("/ask_docs", 10);
-
-p.promise = p.promise.eval("docCookies.getItem('page_load_object')", function(err, res){
-  console.log(' Results: ');
-  console.log( res );
-  return p.promise;
-  //console.log( JSON.parse(res) );
-});
-
-p.promise = p.promise.deleteCookie( 'page_load_object' );
-
-// utility fns
-function login(){
-  p.promise = p.promise
-    .get("/login")
-    .elementByCss('.email-input').type('member1003@gmail.com')
-    .elementByCss('.password-input').type('m3mber')
-    .elementByCss('.submit-form').click()
-    .sleep(5000)
-}
-
-function run_page_n_times( url, times ){
-  for( var i=0; i<times; i++ ){
-    p.promise = p.promise.get(url).sleep(1000)
-  }
-}
-
-// quit
-p.promise = p.promise
-  .quit()
-  .done();
